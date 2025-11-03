@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = '2025. november 3.';
+---
+
+<BaseLayout
+  title="Adatkezelési Tájékoztató | TemetkezésPro"
+  description="Az adatok kezelésére vonatkozó szabályok és előírások a TemetkezésPro szolgáltatás használata során."
+>
+  <Header />
+  <main>
+    <section class="section bg-white">
+      <div class="container-custom">
+        <div class="max-w-4xl mx-auto prose prose-lg">
+          <h1 class="text-4xl md:text-5xl font-bold text-secondary-900 mb-4">
+            Adatkezelési Tájékoztató
+          </h1>
+          <p class="text-secondary-600 mb-8">
+            Utoljára frissítve: {lastUpdated}
+          </p>
+
+          <div class="space-y-8 text-secondary-700 leading-relaxed">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                1. Bevezetés
+              </h2>
+              <p>
+                A TemetkezésPro (a továbbiakban: „Szolgáltató") elkötelezett az Ön személyes adatainak védelme mellett.
+                Jelen Adatkezelési Tájékoztató célja, hogy átlátható módon tájékoztassa Önt arról, hogyan gyűjtjük,
+                használjuk, tároljuk és védjük az Ön személyes adatait a szolgáltatásunk használata során.
+              </p>
+              <p class="mt-4">
+                Adatkezelésünk megfelel az Európai Unió Általános Adatvédelmi Rendeletének (GDPR, 2016/679 EU rendelet)
+                és a vonatkozó magyar jogszabályoknak.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                2. Adatkezelő azonosítása
+              </h2>
+              <p><strong>Adatkezelő neve:</strong> TemetkezésPro Kft.</p>
+              <p><strong>Székhely:</strong> [TODO: Cím megadása]</p>
+              <p><strong>Cégjegyzékszám:</strong> [TODO: Cégjegyzékszám]</p>
+              <p><strong>E-mail:</strong> info@temetkezespro.hu</p>
+              <p><strong>Telefon:</strong> +36 30 123 4567</p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                3. Milyen adatokat gyűjtünk?
+              </h2>
+              <p>Az alábbi adatokat gyűjthetjük:</p>
+              <ul class="list-disc pl-6 mt-4 space-y-2">
+                <li><strong>Kapcsolatfelvételi adatok:</strong> cégnév, kapcsolattartó neve, e-mail cím, telefonszám, település</li>
+                <li><strong>Technikai adatok:</strong> IP-cím, böngésző típusa, eszköz típusa, látogatási időpontok</li>
+                <li><strong>Cookie-k és nyomkövetési technológiák:</strong> felhasználói élmény javítása és analitika céljából</li>
+                <li><strong>Üzleti adatok:</strong> az ügyfél vállalkozásával kapcsolatos információk (ha megadásra kerülnek)</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                4. Adatkezelés célja és jogalapja
+              </h2>
+              <p>Az adatkezelés célja és jogalapja az alábbiak szerint alakul:</p>
+
+              <div class="mt-4 space-y-4">
+                <div>
+                  <p class="font-semibold">Kapcsolatfelvétel és ajánlatkészítés</p>
+                  <p><strong>Jogalap:</strong> Az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont)</p>
+                  <p><strong>Cél:</strong> Kapcsolatfelvétel az érdeklődővel, ajánlat készítése, demó bemutatás egyeztetése</p>
+                </div>
+
+                <div>
+                  <p class="font-semibold">Szerződés teljesítése</p>
+                  <p><strong>Jogalap:</strong> Szerződés teljesítése (GDPR 6. cikk (1) bekezdés b) pont)</p>
+                  <p><strong>Cél:</strong> A TemetkezésPro szolgáltatás nyújtása, ügyfélszolgálat, számlázás</p>
+                </div>
+
+                <div>
+                  <p class="font-semibold">Jogi kötelezettségek teljesítése</p>
+                  <p><strong>Jogalap:</strong> Jogi kötelezettség (GDPR 6. cikk (1) bekezdés c) pont)</p>
+                  <p><strong>Cél:</strong> Számviteli, adózási kötelezettségek teljesítése</p>
+                </div>
+
+                <div>
+                  <p class="font-semibold">Analitika és szolgáltatás fejlesztése</p>
+                  <p><strong>Jogalap:</strong> Jogos érdek (GDPR 6. cikk (1) bekezdés f) pont)</p>
+                  <p><strong>Cél:</strong> Weboldal használatának elemzése, felhasználói élmény javítása</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                5. Adatok tárolásának időtartama
+              </h2>
+              <ul class="list-disc pl-6 mt-4 space-y-2">
+                <li><strong>Kapcsolatfelvételi adatok:</strong> maximum 2 év, ha nem jön létre szerződés</li>
+                <li><strong>Szerződéses adatok:</strong> a szerződés megszűnését követő 8 év (számviteli kötelezettség)</li>
+                <li><strong>Analitikai adatok:</strong> maximum 26 hónap (anonim formában)</li>
+                <li><strong>Cookie-k:</strong> 1-24 hónap (típustól függően)</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                6. Adatok továbbítása
+              </h2>
+              <p>Az Ön adatait harmadik félnek csak az alábbi esetekben adjuk át:</p>
+              <ul class="list-disc pl-6 mt-4 space-y-2">
+                <li><strong>Adatfeldolgozók:</strong> hosting szolgáltató, e-mail szolgáltató, CRM rendszer (csak adatfeldolgozási szerződés alapján)</li>
+                <li><strong>Jogi kötelezettség:</strong> hatóságok részére jogszabályi kötelezettség alapján</li>
+                <li><strong>Üzleti partnerek:</strong> csak az Ön kifejezett hozzájárulásával</li>
+              </ul>
+              <p class="mt-4">
+                <strong>Adattovábbítás harmadik országba:</strong> Az adatokat kizárólag az Európai Unió területén tároljuk
+                és dolgozzuk fel, harmadik országba nem továbbítjuk.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                7. Az Ön jogai
+              </h2>
+              <p>A GDPR alapján az alábbi jogokkal rendelkezik:</p>
+              <ul class="list-disc pl-6 mt-4 space-y-2">
+                <li><strong>Hozzáférési jog:</strong> tájékoztatást kérhet arról, hogy milyen adatait kezeljük</li>
+                <li><strong>Helyesbítési jog:</strong> kérheti pontatlan adatai javítását</li>
+                <li><strong>Törlési jog (elfeledtetéshez való jog):</strong> kérheti adatai törlését</li>
+                <li><strong>Korlátozási jog:</strong> kérheti adatai kezelésének korlátozását</li>
+                <li><strong>Adathordozhatósághoz való jog:</strong> kérheti adatai átadását géppel olvasható formátumban</li>
+                <li><strong>Tiltakozási jog:</strong> tiltakozhat adatai kezelése ellen</li>
+                <li><strong>Hozzájárulás visszavonása:</strong> bármikor visszavonhatja hozzájárulását</li>
+              </ul>
+              <p class="mt-4">
+                Jogainak gyakorlásához írjon nekünk az info@temetkezespro.hu címre vagy a fenti elérhetőségeken keresztül.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                8. Adatbiztonság
+              </h2>
+              <p>
+                Az Ön adatainak védelmét rendkívül komolyan vesszük. A következő biztonsági intézkedéseket alkalmazzuk:
+              </p>
+              <ul class="list-disc pl-6 mt-4 space-y-2">
+                <li>SSL/TLS titkosítás minden adatátvitelhez</li>
+                <li>256-bites AES titkosítás az adatbázisban tárolt adatokhoz</li>
+                <li>Napi automatikus biztonsági mentés</li>
+                <li>Többszintű hozzáférés-vezérlés</li>
+                <li>Kéttényezős hitelesítés</li>
+                <li>Rendszeres biztonsági auditok és frissítések</li>
+                <li>ISO 27001 tanúsítvánnyal rendelkező szerver infrastruktúra</li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                9. Cookie-k használata
+              </h2>
+              <p>
+                Weboldalunk cookie-kat (sütiket) használ a felhasználói élmény javítása, analitika és marketing célokból.
+                A cookie-k használatáról részletes információt a Cookie Szabályzatunkban talál.
+              </p>
+              <p class="mt-4">
+                A cookie-k használatát bármikor letilthatja böngészője beállításaiban.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                10. Panaszkezelés
+              </h2>
+              <p>
+                Ha úgy érzi, hogy megsértettük az Ön adatvédelmi jogait, panaszt tehet:
+              </p>
+              <ul class="list-disc pl-6 mt-4 space-y-2">
+                <li>Nálunk közvetlenül az info@temetkezespro.hu címen</li>
+                <li>A Nemzeti Adatvédelmi és Információszabadság Hatóságnál (NAIH):
+                  <br />Cím: 1055 Budapest, Falk Miksa utca 9-11.
+                  <br />E-mail: ugyfelszolgalat@naih.hu
+                  <br />Telefon: +36 1 391 1400
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                11. Módosítások
+              </h2>
+              <p>
+                Fenntartjuk a jogot jelen Adatkezelési Tájékoztató módosítására. A módosításokról a weboldalunkon
+                keresztül értesítjük Önt. Kérjük, rendszeresen tekintse meg ezt az oldalt a legfrissebb információkért.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
+                12. Kapcsolatfelvétel
+              </h2>
+              <p>
+                Ha kérdése van az adatkezeléssel kapcsolatban, keressen minket bizalommal:
+              </p>
+              <p class="mt-4">
+                <strong>E-mail:</strong> info@temetkezespro.hu<br />
+                <strong>Telefon:</strong> +36 30 123 4567<br />
+                <strong>Postacím:</strong> [TODO: Cím megadása]
+              </p>
+            </div>
+
+            <div class="mt-12 p-6 bg-primary-50 border-2 border-primary-200 rounded-xl">
+              <p class="text-sm text-secondary-600">
+                <strong>Jogi nyilatkozat:</strong> Jelen Adatkezelési Tájékoztató általános tájékoztató jellegű,
+                és nem minősül jogi tanácsadásnak. A pontos jogi megfogalmazáshoz javasoljuk ügyvéd vagy
+                adatvédelmi szakértő bevonását. A [TODO] jelzésű helyeket ki kell tölteni a valós adatokkal.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-12 text-center">
+            <a href="/" class="btn-primary">
+              Vissza a főoldalra
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .prose h2 {
+    @apply mt-12 mb-6;
+  }
+
+  .prose h2:first-of-type {
+    @apply mt-0;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose ul {
+    @apply mb-4;
+  }
+</style>

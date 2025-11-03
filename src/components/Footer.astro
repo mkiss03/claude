@@ -1,0 +1,108 @@
+---
+const currentYear = new Date().getFullYear();
+const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL || 'info@temetkezespro.hu';
+const contactPhone = import.meta.env.PUBLIC_CONTACT_PHONE || '+36 30 123 4567';
+---
+
+<footer class="bg-secondary-900 text-secondary-300">
+  <div class="container-custom py-12 md:py-16">
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+      <!-- Company Info -->
+      <div class="md:col-span-2">
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+            <span class="text-white font-bold text-xl">TP</span>
+          </div>
+          <span class="font-bold text-xl text-white">TemetkezésPro</span>
+        </div>
+        <p class="text-secondary-400 mb-4 max-w-md">
+          Digitális megoldások temetkezési vállalkozásoknak. Modernizálja ügyintézését,
+          spóroljon időt és növelje az ügyfél-elégedettséget.
+        </p>
+        <div class="space-y-2">
+          <p>
+            <a href={`mailto:${contactEmail}`} class="hover:text-primary-400 transition-colors">
+              📧 {contactEmail}
+            </a>
+          </p>
+          <p>
+            <a href={`tel:${contactPhone.replace(/\s/g, '')}`} class="hover:text-primary-400 transition-colors">
+              📞 {contactPhone}
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="font-semibold text-white text-lg mb-4">Gyors linkek</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="#szolgaltatasok" class="hover:text-primary-400 transition-colors">
+              Szolgáltatások
+            </a>
+          </li>
+          <li>
+            <a href="#mukodes" class="hover:text-primary-400 transition-colors">
+              Működés
+            </a>
+          </li>
+          <li>
+            <a href="#arak" class="hover:text-primary-400 transition-colors">
+              Árak
+            </a>
+          </li>
+          <li>
+            <a href="#gyik" class="hover:text-primary-400 transition-colors">
+              GYIK
+            </a>
+          </li>
+          <li>
+            <a href="#kapcsolat" class="hover:text-primary-400 transition-colors">
+              Kapcsolat
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h3 class="font-semibold text-white text-lg mb-4">Jogi információk</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/adatkezeles" class="hover:text-primary-400 transition-colors">
+              Adatkezelési tájékoztató
+            </a>
+          </li>
+          <li>
+            <a href="/impresszum" class="hover:text-primary-400 transition-colors">
+              Impresszum
+            </a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-primary-400 transition-colors">
+              ÁSZF
+            </a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-primary-400 transition-colors">
+              Cookie szabályzat
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-8 border-t border-secondary-800">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-secondary-400">
+        <p>
+          © {currentYear} TemetkezésPro. Minden jog fenntartva.
+        </p>
+        <p>
+          Készítette: <a href="#" class="text-primary-400 hover:text-primary-300 transition-colors">Digital Solutions Team</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

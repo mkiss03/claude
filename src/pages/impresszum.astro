@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Impresszum | TemetkezésPro"
+  description="A TemetkezésPro szolgáltatás jogi információi és kapcsolati adatok."
+>
+  <Header />
+  <main>
+    <section class="section bg-white">
+      <div class="container-custom">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-4xl md:text-5xl font-bold text-secondary-900 mb-12">
+            Impresszum
+          </h1>
+
+          <div class="space-y-12 text-secondary-700 leading-relaxed">
+            <div class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Szolgáltató adatai
+              </h2>
+              <div class="space-y-3">
+                <p><strong>Cégnév:</strong> TemetkezésPro Kft.</p>
+                <p><strong>Székhely:</strong> [TODO: Pontos székhely cím megadása, pl. 1055 Budapest, Falk Miksa utca 1.]</p>
+                <p><strong>Postacím:</strong> [TODO: Postacím, ha eltér]</p>
+                <p><strong>Cégjegyzékszám:</strong> [TODO: pl. 01-09-123456]</p>
+                <p><strong>Adószám:</strong> [TODO: pl. 12345678-2-41]</p>
+                <p><strong>Bankszámlaszám:</strong> [TODO: pl. 12345678-12345678-12345678]</p>
+                <p><strong>Képviselő:</strong> [TODO: Ügyvezető neve és beosztása]</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Kapcsolat
+              </h2>
+              <div class="space-y-3">
+                <p>
+                  <strong>E-mail:</strong>
+                  <a href="mailto:info@temetkezespro.hu" class="text-primary-600 hover:text-primary-700 underline">
+                    info@temetkezespro.hu
+                  </a>
+                </p>
+                <p>
+                  <strong>Telefon:</strong>
+                  <a href="tel:+36301234567" class="text-primary-600 hover:text-primary-700 underline">
+                    +36 30 123 4567
+                  </a>
+                </p>
+                <p><strong>Ügyfélszolgálat:</strong> Hétfő-Péntek 8:00-18:00, Professzionális és Enterprise csomag esetén 0-24</p>
+                <p>
+                  <strong>Weboldal:</strong>
+                  <a href="https://temetkezespro.hu" class="text-primary-600 hover:text-primary-700 underline">
+                    https://temetkezespro.hu
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Tárhelyszolgáltató
+              </h2>
+              <div class="space-y-3">
+                <p><strong>Név:</strong> Vercel Inc.</p>
+                <p><strong>Székhely:</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, USA</p>
+                <p>
+                  <strong>Weboldal:</strong>
+                  <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:text-primary-700 underline">
+                    https://vercel.com
+                  </a>
+                </p>
+                <p class="text-sm text-secondary-600 mt-4">
+                  A szerver infrastruktúra EU-s adatközpontokban található, GDPR-kompatibilis adatkezeléssel.
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Szerzői jogok
+              </h2>
+              <p>
+                A weboldal teljes tartalma (szövegek, képek, grafika, logók, kódok) a TemetkezésPro Kft.
+                szellemi tulajdonát képezik, és szerzői jogi védelem alatt állnak. A tartalmak másolása,
+                terjesztése vagy bármilyen formában történő felhasználása csak írásbeli engedéllyel lehetséges.
+              </p>
+              <p class="mt-4">
+                © {new Date().getFullYear()} TemetkezésPro Kft. Minden jog fenntartva.
+              </p>
+            </div>
+
+            <div class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Felelősség
+              </h2>
+              <p>
+                A TemetkezésPro Kft. folyamatosan törekszik arra, hogy a weboldalon található információk pontosak
+                és naprakészek legyenek. Azonban a szolgáltató nem vállal felelősséget az esetleges hibákért,
+                pontatlanságokért vagy ezekből eredő károkért.
+              </p>
+              <p class="mt-4">
+                A weboldalon található külső hivatkozásokért (harmadik féltől származó tartalmak) nem vállalunk felelősséget.
+              </p>
+            </div>
+
+            <div class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Jogvita
+              </h2>
+              <p>
+                A jelen weboldalra és annak használatára a magyar jog az irányadó. Felhasználó és a Szolgáltató
+                közötti esetleges jogvitákat elsődlegesen békés úton kívánják rendezni. Ennek eredménytelensége
+                esetén a Szolgáltató székhelye szerint illetékes bíróság rendelkezik kizárólagos hatáskörrel.
+              </p>
+            </div>
+
+            <div class="card">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Panaszkezelés
+              </h2>
+              <p>
+                Amennyiben panasza, észrevétele van szolgáltatásainkkal kapcsolatban, kérjük, vegye fel
+                velünk a kapcsolatot az alábbi elérhetőségeken:
+              </p>
+              <div class="mt-4 space-y-2">
+                <p>
+                  <strong>E-mail:</strong>
+                  <a href="mailto:info@temetkezespro.hu" class="text-primary-600 hover:text-primary-700 underline">
+                    info@temetkezespro.hu
+                  </a>
+                </p>
+                <p>
+                  <strong>Telefon:</strong>
+                  <a href="tel:+36301234567" class="text-primary-600 hover:text-primary-700 underline">
+                    +36 30 123 4567
+                  </a>
+                </p>
+              </div>
+              <p class="mt-4">
+                A panaszokat írásban 30 napon belül megválaszoljuk.
+              </p>
+            </div>
+
+            <div class="card bg-primary-50 border-2 border-primary-200">
+              <h2 class="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
+                Jogi dokumentumok
+              </h2>
+              <ul class="space-y-2">
+                <li>
+                  <a href="/adatkezeles" class="text-primary-600 hover:text-primary-700 underline font-semibold">
+                    → Adatkezelési Tájékoztató
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-primary-600 hover:text-primary-700 underline font-semibold">
+                    → Általános Szerződési Feltételek (ÁSZF)
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-primary-600 hover:text-primary-700 underline font-semibold">
+                    → Cookie Szabályzat
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6">
+              <p class="text-sm text-secondary-700">
+                <strong>⚠️ Figyelem:</strong> A [TODO] jelzésű helyeken be kell írni a valós cégadatokat.
+                Ez az impresszum sablon általános tájékoztató jellegű, nem minősül jogi tanácsadásnak.
+                Javasoljuk, hogy a végleges szöveget ügyvéd vagy jogász ellenőrizze.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-12 text-center">
+            <a href="/" class="btn-primary">
+              Vissza a főoldalra
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

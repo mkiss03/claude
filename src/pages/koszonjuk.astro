@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CheckCircle, ArrowLeft, Calendar } from 'lucide-astro';
+
+const calUrl = import.meta.env.PUBLIC_CAL_URL || '#';
+---
+
+<BaseLayout
+  title="Köszönjük! | TemetkezésPro"
+  description="Köszönjük érdeklődését! Hamarosan felvesszük Önnel a kapcsolatot."
+  noindex={true}
+>
+  <Header />
+  <main>
+    <section class="section min-h-[70vh] flex items-center justify-center bg-gradient-to-b from-primary-50 to-white">
+      <div class="container-custom">
+        <div class="max-w-2xl mx-auto text-center">
+          <!-- Success Icon -->
+          <div class="flex justify-center mb-8">
+            <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center">
+              <CheckCircle class="w-16 h-16 text-green-600" />
+            </div>
+          </div>
+
+          <!-- Main Message -->
+          <h1 class="text-4xl md:text-5xl font-bold text-secondary-900 mb-6">
+            Köszönjük az érdeklődését!
+          </h1>
+
+          <p class="text-xl md:text-2xl text-secondary-600 mb-8">
+            Üzenetét sikeresen megkaptuk. Kollégáink <strong>24 órán belül</strong> felveszik Önnel a kapcsolatot
+            a megadott elérhetőségeken.
+          </p>
+
+          <!-- Info Box -->
+          <div class="bg-primary-50 border-2 border-primary-200 rounded-xl p-6 md:p-8 mb-8 text-left">
+            <h2 class="text-xl font-bold text-secondary-900 mb-4">Mit tehet addig?</h2>
+            <ul class="space-y-3 text-secondary-700">
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Nézze meg a <a href="/#gyik" class="text-primary-600 hover:text-primary-700 underline">gyakori kérdéseinket</a> további információkért</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Foglaljon időpontot egy <strong>ingyenes demó bemutatóra</strong> kollégáinkkal</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-6 h-6 text-primary-600 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Ossza meg oldalunkat kollégáival, akiket szintén érdekelhet</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/" class="btn-outline group">
+              <ArrowLeft class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+              Vissza a főoldalra
+            </a>
+            {calUrl !== '#' && (
+              <a
+                href={calUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary"
+              >
+                <Calendar class="w-5 h-5 mr-2" />
+                Demó időpont foglalás
+              </a>
+            )}
+          </div>
+
+          <!-- Contact Info -->
+          <div class="mt-12 pt-8 border-t border-secondary-200">
+            <p class="text-secondary-600 mb-2">Azonnali segítségre van szüksége?</p>
+            <p class="text-secondary-700">
+              Hívjon minket: <a href="tel:+36301234567" class="text-primary-600 hover:text-primary-700 font-semibold underline">+36 30 123 4567</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
