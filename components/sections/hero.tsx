@@ -6,9 +6,10 @@ import { motion } from "framer-motion"
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-teal-900 to-teal-700">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/20 -z-10" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(20,184,166,0.1),transparent)] -z-10" />
 
       <div className="container mx-auto px-4 py-32">
         <motion.div
@@ -22,7 +23,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold"
+            className="inline-flex items-center px-4 py-2 bg-teal-500/20 text-teal-200 rounded-full text-sm font-semibold backdrop-blur-sm border border-teal-500/30"
           >
             🚀 Modern digitális megoldások temetkezési vállalkozásoknak
           </motion.div>
@@ -32,9 +33,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight"
+            className="text-5xl md:text-7xl font-bold tracking-tight text-white"
           >
-            Tegye <span className="text-blue-600">digitálissá</span><br />
+            Tegye <span className="text-teal-400">digitálissá</span><br />
             temetkezési vállalkozását
           </motion.h1>
 
@@ -43,7 +44,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
           >
             Belső elhunyt- és ügyfél-nyilvántartás hivatalos irat-előkészítéssel.
             Nem kapcsolódunk közvetlenül az e-Anyakönyvhöz – az anyakönyvi bejelentéshez szükséges dokumentumokat automatikusan előkészítjük.
@@ -78,16 +79,16 @@ export function Hero() {
             className="pt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
           >
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600">Pilot</div>
-              <div className="text-sm text-muted-foreground mt-1">Partnereket keresünk</div>
+              <div className="text-4xl font-bold text-teal-400">Pilot</div>
+              <div className="text-sm text-slate-400 mt-1">Partnereket keresünk</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600">2026</div>
-              <div className="text-sm text-muted-foreground mt-1">Célunk 50+ partner</div>
+              <div className="text-4xl font-bold text-teal-400">2026</div>
+              <div className="text-sm text-slate-400 mt-1">Célunk 50+ partner</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600">Pro+</div>
-              <div className="text-sm text-muted-foreground mt-1">24/7 támogatás tervben</div>
+              <div className="text-4xl font-bold text-teal-400">Pro+</div>
+              <div className="text-sm text-slate-400 mt-1">24/7 támogatás tervben</div>
             </div>
           </motion.div>
         </motion.div>

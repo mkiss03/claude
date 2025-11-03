@@ -38,7 +38,7 @@ export function ContactForm() {
   }
 
   return (
-    <section id="kapcsolat" className="py-24 bg-gradient-to-b from-white to-blue-50">
+    <section id="kapcsolat" className="py-24 bg-gradient-to-b from-slate-900 to-slate-950">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <motion.div
@@ -47,8 +47,8 @@ export function ContactForm() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold mb-4">Kérjen visszahívást</h2>
-            <p className="text-lg text-muted-foreground">
+            <h2 className="text-4xl font-bold mb-4 text-white">Kérjen visszahívást</h2>
+            <p className="text-lg text-slate-400">
               Töltse ki az alábbi űrlapot, és kollégáink 24 órán belül felveszik Önnel a kapcsolatot.
             </p>
           </motion.div>

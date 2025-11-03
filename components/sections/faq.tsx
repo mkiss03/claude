@@ -28,7 +28,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="gyik" className="py-24 bg-white">
+    <section id="gyik" className="py-24 bg-slate-950">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -36,7 +36,7 @@ export function FAQ() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
           >
             Gyakori kérdések
           </motion.h2>
@@ -45,7 +45,7 @@ export function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-muted-foreground"
+            className="text-lg text-slate-400"
           >
             Minden, amit tudnia kell a TemetkezésPro rendszerről.
           </motion.p>

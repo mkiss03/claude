@@ -59,7 +59,7 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section id="arak" className="py-24 bg-slate-50">
+    <section id="arak" className="py-24 bg-slate-900">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -67,7 +67,7 @@ export function Pricing() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
           >
             Átlátható árazás
           </motion.h2>
@@ -76,7 +76,7 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-muted-foreground"
+            className="text-lg text-slate-400"
           >
             Válassza a vállalkozásához legjobban illő csomagot. Pilot programban érhető el.
           </motion.p>
@@ -92,10 +92,10 @@ export function Pricing() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className={`relative h-full flex flex-col ${plan.featured ? "ring-2 ring-blue-600 shadow-xl scale-105" : ""}`}>
+              <Card className={`relative h-full flex flex-col bg-slate-800/50 border-slate-700 ${plan.featured ? "ring-2 ring-teal-500 shadow-xl shadow-teal-500/20 scale-105" : ""}`}>
                 {plan.featured && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <div className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1">
+                    <div className="bg-gradient-to-r from-teal-500 to-teal-600 text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-1 shadow-lg">
                       <Star className="w-4 h-4" />
                       Legnépszerűbb
                     </div>
@@ -103,11 +103,11 @@ export function Pricing() {
                 )}
 
                 <CardHeader>
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                  <CardDescription>{plan.description}</CardDescription>
+                  <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
+                  <CardDescription className="text-slate-400">{plan.description}</CardDescription>
                   <div className="flex items-baseline gap-2 mt-4">
-                    <span className="text-5xl font-bold">{plan.price}</span>
-                    <span className="text-muted-foreground">€/hó</span>
+                    <span className="text-5xl font-bold text-white">{plan.price}</span>
+                    <span className="text-slate-400">€/hó</span>
                   </div>
                 </CardHeader>
 
@@ -115,8 +115,8 @@ export function Pricing() {
                   <ul className="space-y-3">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <Check className="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
+                        <Check className="w-5 h-5 text-teal-400 mr-2 flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-slate-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -143,7 +143,7 @@ export function Pricing() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto mt-12 text-center"
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-slate-500">
             * Az árak tájékoztató jellegűek, HUF-ban is fizethető a mindenkori MNB árfolyamon.
             Az oldalon szereplő funkciók és szolgáltatási szintek pilot programban érhetők el; a részleteket egyeztetjük.
             Pilot partnerek számára kedvezményes feltételek.

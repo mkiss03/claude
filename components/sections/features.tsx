@@ -45,7 +45,7 @@ const features = [
 
 export function Features() {
   return (
-    <section id="szolgaltatasok" className="py-24 bg-white">
+    <section id="szolgaltatasok" className="py-24 bg-slate-950">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -53,7 +53,7 @@ export function Features() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
           >
             Miért válassza a TemetkezésPro-t?
           </motion.h2>
@@ -62,7 +62,7 @@ export function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-muted-foreground"
+            className="text-lg text-slate-400"
           >
             Minden funkció, amit egy modern temetkezési vállalkozásnak szüksége van egy helyen, felhasználóbarát felülettel.
           </motion.p>
@@ -78,15 +78,15 @@ export function Features() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300">
+              <Card className="h-full bg-slate-900 border-slate-800 hover:border-teal-500/50 hover:shadow-lg hover:shadow-teal-500/10 transition-all duration-300">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-teal-500/10 rounded-lg flex items-center justify-center mb-4 border border-teal-500/20">
+                    <feature.icon className="w-6 h-6 text-teal-400" />
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl text-white">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <CardDescription className="text-base">
+                  <CardDescription className="text-base text-slate-400">
                     {feature.description}
                   </CardDescription>
                 </CardContent>
