@@ -241,8 +241,8 @@ export const POST: APIRoute = async ({ request }) => {
   const referer = request.headers.get('referer');
 
   if (ALLOWED_ORIGINS.length > 0 && ALLOWED_ORIGINS[0] !== '') {
-    const isAllowedOrigin = origin && ALLOWED_ORIGINS.some(allowed => origin.includes(allowed));
-    const isAllowedReferer = referer && ALLOWED_ORIGINS.some(allowed => referer.includes(allowed));
+    const isAllowedOrigin = origin && ALLOWED_ORIGINS.some((allowed: string) => origin.includes(allowed));
+    const isAllowedReferer = referer && ALLOWED_ORIGINS.some((allowed: string) => referer.includes(allowed));
 
     if (!isAllowedOrigin && !isAllowedReferer) {
       return new Response(

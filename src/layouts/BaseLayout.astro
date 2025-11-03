@@ -89,8 +89,8 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
     <meta property="twitter:image" content={ogImageUrl} />
 
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(productSchema)} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -102,14 +102,15 @@ const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
 
     <!-- Analytics -->
     {enableVercelAnalytics && (
-      <script>
+      <script is:inline>
+        // @ts-ignore
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
       </script>
-      <script defer src="/_vercel/insights/script.js"></script>
+      <script is:inline defer src="/_vercel/insights/script.js"></script>
     )}
 
     {enablePlausible && plausibleDomain && (
-      <script defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
+      <script is:inline defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
     )}
   </head>
   <body>
