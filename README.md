@@ -1,610 +1,350 @@
-# TemetkezésPro – Astro Landing Page
+# TemetkezésPro Landing Page
 
-> Modern, production-ready landing oldal temetkezési vállalkozásoknak digitális megoldások népszerűsítésére.
+Modern, reszponzív landing oldal temetkezési vállalkozások számára készült B2B SaaS megoldáshoz. Next.js 14, shadcn/ui komponensekkel és Framer Motion animációkkal.
 
-## 🚀 Gyors Áttekintés
+## ✨ Jellemzők
 
-Ez egy **Astro 4** alapú, magyar nyelvű landing oldal a következő funkciókkal:
+- **Modern UI**: shadcn/ui komponensek Radix UI primitívekkel
+- **Animációk**: Framer Motion viewport trigger-ekkel
+- **Reszponzív**: Mobile-first design Tailwind CSS-sel
+- **SEO optimalizált**: Metadata és OpenGraph tagek
+- **GDPR kompatibilis**: Adatkezelési tájékoztató és süti kezelés
+- **Form integráció**: Make.com webhook VAGY Resend email
+- **TypeScript**: Teljes típusbiztonság
+- **Vercel Ready**: Egyszerű telepítés
 
-- ✅ **Responsive design** – Mobil-first megközelítés, Tailwind CSS
-- ✅ **SEO optimalizált** – Meta tagek, sitemap, schema.org markup
-- ✅ **Űrlap integráció** – Make.com webhook VAGY Resend email
-- ✅ **Analytics** – Vercel Analytics / Plausible támogatás
-- ✅ **GDPR ready** – Adatkezelési tájékoztató, cookie figyelmeztetés
-- ✅ **Calendly/Cal.com** – Időpontfoglalás integráció
-- ✅ **TypeScript** – Típusbiztos fejlesztés
-- ✅ **Vercel optimalizált** – Egyszerű deployment
+## 🚀 Technológiák
 
----
+- **Framework**: Next.js 14 (App Router)
+- **Styling**: Tailwind CSS + CSS változók
+- **Komponensek**: shadcn/ui (Radix UI)
+- **Animáció**: Framer Motion
+- **Ikonok**: Lucide React
+- **Email/Webhook**: Resend vagy Make.com
+- **TypeScript**: Strict mode
 
-## 📋 Tartalomjegyzék
+## 📦 Telepítés
 
-1. [Előfeltételek](#előfeltételek)
-2. [Telepítés (Lokális Fejlesztés)](#telepítés-lokális-fejlesztés)
-3. [Environment Változók Beállítása](#environment-változók-beállítása)
-4. [Fejlesztési Parancsok](#fejlesztési-parancsok)
-5. [Vercel Deployment](#vercel-deployment)
-6. [Make.com Webhook Beállítás](#makecom-webhook-beállítás)
-7. [Resend Email Beállítás](#resend-email-beállítás)
-8. [Custom Domain Beállítás](#custom-domain-beállítás)
-9. [Tartalom Testreszabása](#tartalom-testreszabása)
-10. [SEO & Analytics](#seo--analytics)
-11. [Troubleshooting](#troubleshooting)
-12. [Acceptance Criteria](#acceptance-criteria)
-
----
-
-## 🛠️ Előfeltételek
-
-Mielőtt elkezdi, győződjön meg arról, hogy telepítve van:
-
-- **Node.js** v18 vagy újabb ([letöltés](https://nodejs.org/))
-- **npm**, **yarn** vagy **pnpm** csomagkezelő
-- **Git** verziókezelő rendszer
-- **Vercel fiók** (ingyenes) – [regisztráció](https://vercel.com/signup)
-- **GitHub fiók** – a kód tárolásához
-
----
-
-## 📦 Telepítés (Lokális Fejlesztés)
-
-### 1. Projekt Klónozása vagy Letöltése
-
-```bash
-# Ha Git repository-ban van
-git clone https://github.com/your-username/temetkezespro-portal.git
-cd temetkezespro-portal
-
-# Vagy egyszerűen másolja át a projekt mappát
-```
-
-### 2. Függőségek Telepítése
+### 1. Függőségek telepítése
 
 ```bash
 npm install
-
-# Vagy yarn/pnpm használatával:
-# yarn install
-# pnpm install
 ```
 
-Ez telepíti:
-- Astro 4.x
-- Tailwind CSS
-- TypeScript
-- Lucide Icons
-- Resend SDK (email küldéshez)
-- Összes további dependency
+### 2. Környezeti változók beállítása
 
-### 3. Environment Változók Másolása
+Másold le a `.env.example` fájlt `.env.local` névre:
 
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 ```
 
-Ezután nyissa meg a `.env` fájlt és töltse ki a megfelelő értékekkel (lásd lentebb).
+Töltsd ki a következő értékeket:
 
-### 4. Lokális Development Server Indítása
+```env
+# Válassz egy módszert: 'make' vagy 'resend'
+LEAD_MODE=make
+
+# Make.com használata esetén
+MAKE_WEBHOOK_URL=https://hook.eu1.make.com/your-webhook-id
+
+# Resend használata esetén
+RESEND_API_KEY=re_your_api_key
+RESEND_FROM=TemetkezésPro <hello@temetkezespro.hu>
+RESEND_TO=info@temetkezespro.hu
+
+# Biztonsági beállítás
+ALLOWED_ORIGINS=temetkezespro.hu
+```
+
+### 3. Fejlesztői szerver indítása
 
 ```bash
 npm run dev
 ```
 
-A projekt elérhető lesz: **http://localhost:4321**
+Nyisd meg a böngésződben: [http://localhost:3000](http://localhost:3000)
 
----
+## 🔧 Konfiguráció
 
-## 🔐 Environment Változók Beállítása
+### Make.com Webhook Beállítása
 
-Nyissa meg a `.env` fájlt és töltse ki:
-
-### Kötelező Változók
-
-```env
-# Site URL (production)
-PUBLIC_SITE_URL=https://temetkezespro.hu
-
-# Kapcsolati adatok
-PUBLIC_CONTACT_EMAIL=info@temetkezespro.hu
-PUBLIC_CONTACT_PHONE=+36 30 123 4567
-
-# Lead form mód: 'make' VAGY 'resend'
-LEAD_MODE=make
-
-# Ha LEAD_MODE=make:
-MAKE_WEBHOOK_URL=https://hook.eu1.make.com/xxxxxxxxxxxxxxxx
-
-# Ha LEAD_MODE=resend:
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxx
-LEAD_TO_EMAIL=info@temetkezespro.hu
-LEAD_FROM_EMAIL=noreply@temetkezespro.hu
-
-# CSRF védelem (production)
-ALLOWED_ORIGINS=temetkezespro.hu,www.temetkezespro.hu
-
-# Calendly/Cal.com link
-PUBLIC_CAL_URL=https://calendly.com/your-username/30min
-```
-
-### Opcionális Változók
-
-```env
-# Analytics
-PUBLIC_ENABLE_VERCEL_ANALYTICS=true
-PUBLIC_ENABLE_PLAUSIBLE=false
-PUBLIC_PLAUSIBLE_DOMAIN=temetkezespro.hu
-```
-
----
-
-## 🧑‍💻 Fejlesztési Parancsok
-
-| Parancs | Leírás |
-|---------|--------|
-| `npm run dev` | Fejlesztői szerver indítása (http://localhost:4321) |
-| `npm run build` | Production build készítése (`dist/` mappába) |
-| `npm run preview` | Build előnézete lokálisan |
-| `npm run astro` | Astro CLI parancsok futtatása |
-
----
-
-## ☁️ Vercel Deployment
-
-### Módszer 1: Vercel Dashboard (Ajánlott Kezdőknek)
-
-1. **GitHub Repository Létrehozása**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: TemetkezésPro landing"
-   git branch -M main
-   git remote add origin https://github.com/your-username/temetkezespro-portal.git
-   git push -u origin main
+1. Lépj be a [Make.com](https://make.com) fiókodba
+2. Hozz létre egy új Scenario-t
+3. Adj hozzá egy **Webhook** modult trigger-ként
+4. Válaszd a "Custom webhook" opciót
+5. Másold ki a webhook URL-t
+6. Állítsd be a `.env.local`-ban:
+   ```env
+   LEAD_MODE=make
+   MAKE_WEBHOOK_URL=https://hook.eu1.make.com/your-webhook-id
    ```
+7. Add hozzá a kívánt modulokat (pl. Google Sheets, Email, CRM)
 
-2. **Vercel Importálás**
-   - Menj a [Vercel Dashboard](https://vercel.com/dashboard)-ra
-   - Kattints **"Add New Project"** gombra
-   - **Import Git Repository** → válaszd ki a GitHub repo-t
-   - Vercel automatikusan felismeri az Astro projektet
+**Várható adatstruktúra a webhookből:**
 
-3. **Environment Variables Beállítása**
-
-   A Vercel projekt beállításokban:
-   - Settings → Environment Variables
-   - Add hozzá az ÖSSZES environment változót a `.env` fájlból
-   - **FONTOS**: A `PUBLIC_` prefixű változók publikusak lesznek!
-
-   Példa:
-   ```
-   PUBLIC_SITE_URL = https://temetkezespro.hu
-   MAKE_WEBHOOK_URL = https://hook.eu1.make.com/xxxxx (SECRET)
-   RESEND_API_KEY = re_xxxxxxxxx (SECRET)
-   LEAD_MODE = make
-   ```
-
-4. **Deploy Indítása**
-   - Kattints **"Deploy"** gombra
-   - Vercel automatikusan:
-     - Build-eli a projektet
-     - Optimalizálja a statikus fájlokat
-     - Létrehoz egy `.vercel.app` domain-t
-
-5. **Production URL**
-   - Az első deploy után kapsz egy URL-t: `https://temetkezespro-portal.vercel.app`
-   - Ez azonnal elérhető és működik!
-
-### Módszer 2: Vercel CLI (Haladóknak)
-
-```bash
-# Vercel CLI telepítése
-npm i -g vercel
-
-# Login
-vercel login
-
-# Deploy
-vercel --prod
-```
-
----
-
-## 🔗 Make.com Webhook Beállítás
-
-Ha `LEAD_MODE=make` van beállítva:
-
-### 1. Make.com Scenario Létrehozása
-
-1. Regisztrálj vagy jelentkezz be: [make.com](https://www.make.com/)
-2. Kattints **"Create a new scenario"**
-3. Keress rá: **"Webhooks"** → Add hozzá
-4. Válaszd: **"Custom webhook"**
-5. **Webhook létrehozása**:
-   - Adj neki nevet: pl. "TemetkezésPro Lead"
-   - Másoldd ki a webhook URL-t (kezdődik: `https://hook.eu1.make.com/...`)
-6. **Teszteld a webhook-ot**:
-   - A Make.com vár egy tesztelésre
-   - Töltsd ki az űrlapot a weboldalon
-   - Make.com automatikusan felismeri az adatstruktúrát
-
-### 2. Google Sheets Kapcsolás (Példa)
-
-1. Make.com scenarióban add hozzá: **"Google Sheets" modult**
-2. Válaszd: **"Add a row"**
-3. Kapcsold össze Google fiókkal
-4. Válaszd ki a Spreadsheet-et és Sheet-et
-5. Térképezd fel a mezőket:
-   - Cégnév → Webhook: `company`
-   - Település → Webhook: `city`
-   - Név → Webhook: `name`
-   - Telefon → Webhook: `phone`
-   - Email → Webhook: `email`
-   - Megjegyzés → Webhook: `message`
-   - Timestamp → Webhook: `timestamp`
-
-6. **Mentsd és aktiváld** a scenario-t
-
-### 3. .env Frissítése
-
-```env
-MAKE_WEBHOOK_URL=https://hook.eu1.make.com/xxxxxxxxxxxxxxxxx
-```
-
----
-
-## 📧 Resend Email Beállítás
-
-Ha `LEAD_MODE=resend` van beállítva:
-
-### 1. Resend Regisztráció
-
-1. Regisztrálj: [resend.com](https://resend.com/)
-2. Erősítsd meg email címed
-
-### 2. Domain Hitelesítés
-
-1. Dashboard → **"Domains"** → **"Add Domain"**
-2. Add meg: `temetkezespro.hu`
-3. Resend ad 3 DNS rekordot:
-   - SPF (TXT)
-   - DKIM (TXT)
-   - DMARC (TXT)
-4. **Add hozzá ezeket a DNS beállításaidhoz** (lásd DNS példa lentebb)
-5. Várj 10-60 percet a propagációra
-6. Verifikáld a domain-t Resend dashboard-on
-
-### 3. API Kulcs Generálás
-
-1. Dashboard → **"API Keys"** → **"Create API Key"**
-2. Adj neki nevet: pl. "TemetkezésPro Production"
-3. Másoldd ki a kulcsot (kezdődik: `re_...`)
-
-### 4. .env Frissítése
-
-```env
-LEAD_MODE=resend
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-LEAD_TO_EMAIL=info@temetkezespro.hu
-LEAD_FROM_EMAIL=noreply@temetkezespro.hu
-```
-
-### 5. Teszt Email Küldés
-
-Töltsd ki az űrlapot → Ha minden jó, emailt fogsz kapni a `LEAD_TO_EMAIL` címre.
-
----
-
-## 🌐 Custom Domain Beállítás
-
-### 1. Domain Vásárlás
-
-Vásárolj domain-t (pl. **temetkezespro.hu**) szolgáltatóknál:
-- GoDaddy, Namecheap, CloudFlare, stb. (nemzetközi)
-- Tárhely.eu, DotRoll (magyar)
-
-### 2. Vercel Domain Hozzáadása
-
-1. Vercel Dashboard → Projekt → **"Settings"** → **"Domains"**
-2. Add hozzá: `temetkezespro.hu`
-3. Vercel mutat egy A vagy CNAME rekordot, pl:
-   ```
-   Type: A
-   Name: @
-   Value: 76.76.21.21
-
-   Type: CNAME
-   Name: www
-   Value: cname.vercel-dns.com
-   ```
-
-### 3. DNS Rekordok Beállítása
-
-Menj a domain szolgáltatódhoz (pl. GoDaddy) → DNS Management:
-
-#### Alap Rekordok (Vercel):
-```
-Type: A
-Name: @
-Value: 76.76.21.21
-TTL: 3600
-
-Type: CNAME
-Name: www
-Value: cname.vercel-dns.com
-TTL: 3600
-```
-
-#### Email Rekordok (Resend – opcionális):
-```
-Type: TXT
-Name: @
-Value: v=spf1 include:_spf.resend.com ~all
-TTL: 3600
-
-Type: TXT
-Name: resend._domainkey
-Value: [RESEND DKIM kulcs]
-TTL: 3600
-
-Type: TXT
-Name: _dmarc
-Value: v=DMARC1; p=none; rua=mailto:dmarc@temetkezespro.hu
-TTL: 3600
-```
-
-### 4. Propagáció Ellenőrzése
-
-DNS propagáció 10-60 perc:
-```bash
-# Ellenőrzés
-dig temetkezespro.hu
-nslookup temetkezespro.hu
-
-# Online eszköz
-https://www.whatsmydns.net/
-```
-
-### 5. SSL Tanúsítvány
-
-Vercel automatikusan létrehoz **Let's Encrypt SSL** tanúsítványt.
-- HTTPS automatikusan működik
-- HTTP → HTTPS redirect beépített
-
----
-
-## ✍️ Tartalom Testreszabása
-
-### Szövegek Módosítása
-
-1. **Hero headline** → `src/components/Hero.astro`
-2. **Szolgáltatások** → `src/components/Features.astro`
-3. **Hogyan működik** → `src/components/HowItWorks.astro`
-4. **Árak** → `src/components/Pricing.astro`
-5. **GYIK** → `src/components/FAQ.astro`
-
-### Képek Cseréje
-
-Helyettesítsd a `public/` mappában:
-- `og-image.jpg` – Open Graph kép (1200x630px)
-- `logo.png` – Céges logó (512x512px)
-- `favicon.svg` – Favicon (tetszőleges SVG)
-
-### Színek Módosítása
-
-`tailwind.config.cjs` → `theme.extend.colors`:
-```js
-primary: {
-  600: '#0284c7', // Fő szín (kék)
-  700: '#0369a1',
+```json
+{
+  "name": "Kovács János",
+  "email": "kovacs@example.com",
+  "phone": "+36 30 123 4567",
+  "company": "Temetkezés Kft.",
+  "message": "Érdeklődöm a termék iránt",
+  "consent": true,
+  "timestamp": "2025-11-03T10:30:00.000Z",
+  "source": "temetkezespro-landing"
 }
 ```
 
----
+### Resend Email Beállítása
 
-## 📊 SEO & Analytics
-
-### SEO Optimalizálás
-
-✅ **Már kész:**
-- Meta title & description minden oldalon
-- OpenGraph & Twitter cards
-- Schema.org JSON-LD (Organization, Product, LocalBusiness)
-- Sitemap.xml (automatikus)
-- robots.txt
-
-🔧 **Teendő:**
-1. Customizáld a meta leírásokat: `src/pages/*.astro`
-2. Google Search Console beállítás:
-   - Add hozzá domain-t
-   - Sitemap URL: `https://temetkezespro.hu/sitemap-index.xml`
-3. Lighthouse audit futtatás (Chrome DevTools)
-
-### Vercel Analytics
-
-```env
-PUBLIC_ENABLE_VERCEL_ANALYTICS=true
-```
-
-Automatikusan működik Vercel-en, ingyenes 100k pageview-ig.
-
-### Plausible Analytics (GDPR-friendly)
-
-1. Regisztráció: [plausible.io](https://plausible.io/)
-2. Add hozzá domain-t: `temetkezespro.hu`
-3. `.env`:
+1. Regisztrálj a [Resend.com](https://resend.com)-on
+2. Igazold a domain-edet (pl. `temetkezespro.hu`)
+3. Hozz létre egy API kulcsot
+4. Állítsd be a `.env.local`-ban:
    ```env
-   PUBLIC_ENABLE_PLAUSIBLE=true
-   PUBLIC_PLAUSIBLE_DOMAIN=temetkezespro.hu
+   LEAD_MODE=resend
+   RESEND_API_KEY=re_your_api_key
+   RESEND_FROM=TemetkezésPro <hello@temetkezespro.hu>
+   RESEND_TO=info@temetkezespro.hu
    ```
 
----
+## 🎨 Testreszabás
 
-## 🐛 Troubleshooting
+### Színek módosítása
 
-### 1. Űrlap nem küldi el az adatokat
+A színeket a `app/globals.css` fájlban találod CSS változókként:
 
-**Probléma:** "Network error" vagy 403 hiba.
+```css
+:root {
+  --primary: 221 83% 53%;  /* Kék */
+  --secondary: 210 40% 96%; /* Világos szürke */
+  /* ... további színek */
+}
+```
 
-**Megoldás:**
-- Ellenőrizd: `.env` fájlban van `MAKE_WEBHOOK_URL` vagy `RESEND_API_KEY`
-- CSRF védelem: add hozzá domain-t az `ALLOWED_ORIGINS`-hoz
-- Make.com: aktiválva van a scenario?
-- Resend: domain verifikálva van?
+### Tartalom szerkesztése
 
-### 2. Build hiba: "Module not found"
+A főbb tartalmak a következő fájlokban találhatók:
 
-**Probléma:** `npm run build` hibát dob.
+- **Főoldal szekciók**: `components/sections/`
+  - `hero.tsx` - Hero szekció
+  - `features.tsx` - Funkciók
+  - `pricing.tsx` - Árazás
+  - `faq.tsx` - GYIK
+  - `contact-form.tsx` - Kapcsolat form
+  - `footer.tsx` - Lábléc
 
-**Megoldás:**
+- **Oldalak**: `app/`
+  - `page.tsx` - Főoldal
+  - `koszonjuk/page.tsx` - Köszönjük oldal
+  - `adatkezeles/page.tsx` - Adatkezelési tájékoztató
+  - `impresszum/page.tsx` - Impresszum
+
+### Új komponens hozzáadása
+
+shadcn/ui használatával könnyen adj hozzá új komponenseket:
+
+```bash
+npx shadcn-ui@latest add [component-name]
+```
+
+Példa:
+```bash
+npx shadcn-ui@latest add dialog
+```
+
+## 🌐 Vercel Telepítés
+
+### 1. Vercel CLI telepítése (opcionális)
+
+```bash
+npm i -g vercel
+```
+
+### 2. Projekt telepítése Vercel-re
+
+#### A) Vercel CLI-val
+
+```bash
+vercel
+```
+
+#### B) GitHub Integration-nel
+
+1. Push-old a kódot GitHub-ra
+2. Lépj be [vercel.com](https://vercel.com)-ra
+3. Kattints az "Import Project" gombra
+4. Válaszd ki a GitHub repository-t
+5. Állítsd be a környezeti változókat (lásd lent)
+6. Kattints a "Deploy" gombra
+
+### 3. Környezeti változók beállítása Vercel-en
+
+A Vercel Dashboard-on állítsd be a következő environment variables-t:
+
+```
+LEAD_MODE=make
+MAKE_WEBHOOK_URL=https://hook.eu1.make.com/...
+ALLOWED_ORIGINS=temetkezespro.hu,www.temetkezespro.hu
+```
+
+vagy Resend esetén:
+
+```
+LEAD_MODE=resend
+RESEND_API_KEY=re_...
+RESEND_FROM=TemetkezésPro <hello@temetkezespro.hu>
+RESEND_TO=info@temetkezespro.hu
+ALLOWED_ORIGINS=temetkezespro.hu,www.temetkezespro.hu
+```
+
+### 4. Domain beállítása
+
+1. Menj a Project Settings > Domains menübe
+2. Add hozzá a domain-edet: `temetkezespro.hu`
+3. Állítsd be a DNS rekordokat a domain szolgáltatódnál:
+   ```
+   A Record: @ → 76.76.21.21
+   CNAME: www → cname.vercel-dns.com
+   ```
+
+## 📊 Analytics
+
+### Vercel Analytics (Beépített)
+
+A Vercel Analytics automatikusan engedélyezett Vercel-re telepített Next.js alkalmazásoknál. Nincs további konfiguráció szükséges.
+
+### Plausible Analytics (Opcionális)
+
+Ha Plausible-t szeretnél használni:
+
+1. Regisztrálj a [Plausible.io](https://plausible.io)-n
+2. Add hozzá a domain-edet
+3. Állítsd be az environment variable-t:
+   ```env
+   NEXT_PUBLIC_PLAUSIBLE_DOMAIN=temetkezespro.hu
+   ```
+4. Add hozzá a script-et az `app/layout.tsx`-hez:
+   ```tsx
+   <script defer data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN} src="https://plausible.io/js/script.js"></script>
+   ```
+
+## 🧪 Build és Teszt
+
+### Development build
+
+```bash
+npm run dev
+```
+
+### Production build
+
+```bash
+npm run build
+npm run start
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+## 📁 Projekt Struktúra
+
+```
+temetkezespro-landing/
+├── app/
+│   ├── api/
+│   │   └── lead/
+│   │       └── route.ts          # API endpoint lead küldéshez
+│   ├── adatkezeles/
+│   │   └── page.tsx              # Adatkezelési tájékoztató
+│   ├── impresszum/
+│   │   └── page.tsx              # Impresszum
+│   ├── koszonjuk/
+│   │   └── page.tsx              # Köszönjük oldal
+│   ├── globals.css               # Global CSS + Tailwind
+│   ├── layout.tsx                # Root layout
+│   └── page.tsx                  # Főoldal
+├── components/
+│   ├── sections/
+│   │   ├── hero.tsx              # Hero szekció
+│   │   ├── features.tsx          # Funkciók
+│   │   ├── pricing.tsx           # Árazás
+│   │   ├── faq.tsx               # GYIK
+│   │   ├── contact-form.tsx      # Kapcsolat form
+│   │   └── footer.tsx            # Lábléc
+│   └── ui/
+│       ├── button.tsx            # shadcn/ui komponensek
+│       ├── card.tsx
+│       ├── accordion.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       ├── textarea.tsx
+│       └── checkbox.tsx
+├── lib/
+│   └── utils.ts                  # Utility függvények
+├── .env.example                  # Environment variables példa
+├── .gitignore
+├── components.json               # shadcn/ui konfig
+├── next.config.mjs
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.ts
+└── tsconfig.json
+```
+
+## 🔒 Biztonság
+
+- **CSRF védelem**: ALLOWED_ORIGINS environment variable
+- **Input validáció**: Email és telefonszám validáció
+- **HTTPS**: Minden production környezetben kötelező
+- **Environment variables**: Soha ne commit-old a `.env.local` fájlt!
+
+## 📝 Tartalmi irányelvek
+
+Az oldal tartalma GDPR-kompatibilis és nem tartalmaz félrevezető információkat:
+
+- ❌ "Digitális e-Anyakönyv" helyett → ✅ "Belső elhunyt-nyilvántartás"
+- ❌ "50+ ügyfél" helyett → ✅ "Pilot fázis, partnereket keresünk"
+- ❌ "24/7 support" helyett → ✅ "Tervezett 24/7 a Pro+ csomagban"
+- ✅ Explicit disclaimer: "Nem kapcsolódunk közvetlenül az e-Anyakönyvhöz"
+
+## 🐛 Hibaelhárítás
+
+### Build error: Module not found
+
 ```bash
 rm -rf node_modules package-lock.json
 npm install
-npm run build
 ```
 
-### 3. Vercel deployment timeout
+### TypeScript error
 
-**Probléma:** Vercel build 10 perc után timeout.
-
-**Megoldás:**
-- Ellenőrizd: nincs-e végtelen loop a kódban
-- Astro config: `output: 'hybrid'` vagy `'static'`
-
-### 4. Email nem érkezik meg (Resend)
-
-**Probléma:** Űrlap küldés sikeres, de nincs email.
-
-**Megoldás:**
-- Resend Dashboard → "Logs" → ellenőrizd az emailt
-- Spam mappát nézd meg
-- DNS rekordok: SPF, DKIM helyesen van beállítva?
-
----
-
-## ✅ Acceptance Criteria
-
-Használd ezt a checklistet a projekt átvételéhez:
-
-### Telepítés & Build
-- [ ] `npm install` hiba nélkül lefut
-- [ ] `npm run dev` elindítja a dev szervert
-- [ ] `npm run build` sikeres production build
-- [ ] Nincs TypeScript hiba
-
-### Tartalom
-- [ ] Hero szekció: headline, subheadline, CTA gombok
-- [ ] Szolgáltatások: 6 feature kártya
-- [ ] Hogyan működik: 3 lépés
-- [ ] Előtte-utána story számokkal
-- [ ] Árak: 3 csomag indikatív árral
-- [ ] GYIK: minimum 6 kérdés-válasz
-- [ ] Kapcsolat űrlap: 6 mező + adatkezelés checkbox
-
-### Funkciók
-- [ ] Mobil-first responsive design (tesztelve 320px-től)
-- [ ] Header: sticky, mobil menü működik
-- [ ] Footer: linkek, impresszum, adatkezelés
-- [ ] Űrlap validáció: HTML5 + szerver oldali
-- [ ] Űrlap küldés: Make VAGY Resend működik
-- [ ] Sikeres küldés után: redirect `/koszonjuk`-ra
-- [ ] Hiba esetén: hibaüzenet megjelenik
-
-### SEO & Analytics
-- [ ] Meta title & description minden oldalon
-- [ ] OpenGraph képek beállítva
-- [ ] Schema.org JSON-LD markup
-- [ ] Sitemap.xml generálódik
-- [ ] robots.txt helyes
-- [ ] Vercel Analytics vagy Plausible működik (ha engedélyezve)
-
-### Vercel Deployment
-- [ ] GitHub repo létrehozva és pushed
-- [ ] Vercel projekt importálva
-- [ ] Environment változók beállítva
-- [ ] Első deploy sikeres
-- [ ] `.vercel.app` domain működik
-
-### Custom Domain (opcionális)
-- [ ] Domain megvásárolva
-- [ ] DNS A rekord beállítva
-- [ ] CNAME (www) beállítva
-- [ ] SSL tanúsítvány aktív (HTTPS működik)
-- [ ] Resend domain verifikálva (ha használod)
-
-### GDPR & Jogi
-- [ ] Adatkezelési tájékoztató oldal
-- [ ] Impresszum oldal (cégadatokkal kitöltve)
-- [ ] Űrlapon kötelező privacy checkbox
-- [ ] Cookie szabályzat link (ha van cookie banner)
-
-### Teljesítmény
-- [ ] Lighthouse Score: Performance > 90
-- [ ] Lighthouse Score: Accessibility > 90
-- [ ] Lighthouse Score: SEO > 95
-- [ ] Nincs console error production-ben
-
----
-
-## 📚 További Fejlesztési Javaslatok
-
-### 1. Város Oldalalak (Dynamic Routes)
-
-Hozz létre város-specifikus oldalakat SEO-hoz:
-
-```astro
-// src/pages/[city].astro
----
-export function getStaticPaths() {
-  return [
-    { params: { city: 'budapest' } },
-    { params: { city: 'debrecen' } },
-    { params: { city: 'szeged' } },
-  ];
-}
----
-```
-
-### 2. Blog Integráció
-
-Astro Content Collections:
 ```bash
-src/content/blog/
-  - post-1.md
-  - post-2.md
+npm run lint
 ```
 
-### 3. Multi-nyelv Támogatás
+### API endpoint nem működik
 
-Astro i18n routing:
-- `/hu/` – Magyar
-- `/en/` – Angol
-- `/de/` – Német
+Ellenőrizd a `.env.local` fájlt és a environment variables-t Vercel-en.
 
-### 4. CRM Integráció
+## 📞 Támogatás
 
-- HubSpot API
-- Salesforce
-- Pipedrive
+Ha kérdésed van:
 
----
-
-## 📞 Támogatás & Kapcsolat
-
-**Fejlesztő:** [Your Name / Agency]
-**Email:** [your-email@example.com]
-**GitHub:** [github.com/your-username]
-
----
+- Email: info@temetkezespro.hu
+- Telefon: +36 30 123 4567
 
 ## 📄 Licensz
 
-MIT License – szabadon használható és módosítható.
+© 2025 TemetkezésPro. Minden jog fenntartva.
 
 ---
 
-**Elkészítve:** 2025. november 3.
-**Astro verzió:** 4.x
-**Node.js verzió:** 18+
-**Tailwind CSS verzió:** 3.x
-
-🎉 **Sok sikert a projekthez!**
+**Készítette**: Claude AI
+**Verzió**: 1.0.0 (Next.js)
+**Utolsó frissítés**: 2025-11-03
