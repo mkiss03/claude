@@ -23,6 +23,7 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
+    functionPerRoute: false,
   }),
   vite: {
     ssr: {
