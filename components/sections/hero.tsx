@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar } from "lucide-react"
 import { motion } from "framer-motion"
+import { DashboardPreview } from "@/components/3d/dashboard-preview"
+import { AnimatedStats } from "@/components/widgets/animated-stats"
 
 export function Hero() {
   return (
@@ -16,7 +18,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-5xl mx-auto text-center space-y-8"
+          className="max-w-7xl mx-auto text-center space-y-12"
         >
           {/* Badge */}
           <motion.div
@@ -71,26 +73,15 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          {/* Trust Indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="pt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
-          >
-            <div className="text-center">
-              <div className="text-4xl font-bold text-teal-400">Pilot</div>
-              <div className="text-sm text-slate-400 mt-1">Partnereket keresünk</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-teal-400">2026</div>
-              <div className="text-sm text-slate-400 mt-1">Célunk 50+ partner</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-teal-400">Pro+</div>
-              <div className="text-sm text-slate-400 mt-1">24/7 támogatás tervben</div>
-            </div>
-          </motion.div>
+          {/* 3D Dashboard Preview */}
+          <div className="pt-12">
+            <DashboardPreview />
+          </div>
+
+          {/* Animated Stats */}
+          <div className="pt-12">
+            <AnimatedStats />
+          </div>
         </motion.div>
       </div>
     </section>
