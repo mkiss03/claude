@@ -98,6 +98,23 @@ async function sendViaResend(data: LeadData): Promise<{ success: boolean; error?
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if webhook is configured
+    if (LEAD_MODE === "make" && !MAKE_WEBHOOK_URL) {
+      console.error("MAKE_WEBHOOK_URL is not configured")
+      return NextResponse.json(
+        { error: "A webhook nincs beállítva. Kérjük, vegye fel a kapcsolatot az adminisztrátorral." },
+        { status: 500 }
+      )
+    }
+
+    if (LEAD_MODE === "resend" && !RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not configured")
+      return NextResponse.json(
+        { error: "Az email szolgáltatás nincs beállítva. Kérjük, vegye fel a kapcsolatot az adminisztrátorral." },
+        { status: 500 }
+      )
+    }
+
     // CSRF check
     const origin = request.headers.get("origin")
     if (ALLOWED_ORIGINS.length > 0) {
@@ -164,8 +181,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("Lead API error:", error)
+    const errorMessage = error instanceof Error ? error.message : "Ismeretlen hiba"
+    console.error("Error details:", errorMessage)
     return NextResponse.json(
-      { error: "Hiba történt a küldés során" },
+      {
+        error: "Hiba történt a küldés során",
+        details: process.env.NODE_ENV === "development" ? errorMessage : undefined
+      },
       { status: 500 }
     )
   }
