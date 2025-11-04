@@ -5,6 +5,24 @@
 1. ✅ `vercel.json` fájl létrehozva → Next.js konfiguráció
 2. ✅ `.env.local` fájl létrehozva → Lokális fejlesztéshez
 3. ✅ Minden git-be push-olva
+4. ✅ Build hibák javítva (standalone mode eltávolítva)
+
+---
+
+## 🎯 VÁLASSZ EGY MEGOLDÁST:
+
+### OPCIÓ A: Resend Email (⭐ AJÁNLOTT - Egyszerűbb!)
+- ✅ 2 perc setup
+- ✅ Ingyenes 100 email/nap
+- ✅ Megbízható email kézbesítés
+- ✅ Nincs Make.com workflow szerkesztés
+- **→ Ugorj a "2A. Resend Email Setup" részhez**
+
+### OPCIÓ B: Make.com Webhooks
+- ⚠️ Bonyolultabb setup
+- ✅ Több integráció (Google Sheets, CRM, stb.)
+- ✅ Workflow automáció
+- **→ Ugorj a "2B. Make.com Setup" részhez**
 
 ---
 
@@ -30,42 +48,119 @@
 
 ---
 
-### 🌐 2. LÉPÉS: Environment Variables beállítása (KÖTELEZŐ!)
+### 🌐 2A. Resend Email Setup (⭐ AJÁNLOTT - Egyszerű!)
 
-**Probléma:** Az űrlap 500-as hibát ad, mert a MAKE_WEBHOOK_URL nincs beállítva a production környezetben.
+#### 1. Resend regisztráció és API kulcs
 
-**Megoldás:**
+1. **Menj a:** https://resend.com
+2. **Sign Up** (ingyenes, nincs bankkártya szükséges)
+3. **Dashboard** → **API Keys** → **Create API Key**
+4. **Másold ki** az API kulcsot (pl: `re_123abc...`)
 
-1. Még mindig a **Vercel Dashboard** → **Settings** menüben vagyunk
-2. Kattints az **"Environment Variables"** menüpontra (bal oldali menü)
+#### 2. Vercel Environment Variables
 
-#### Első változó:
+**Vercel Dashboard** → **Settings** → **Environment Variables**
+
+**Adj hozzá 3 változót:**
+
+```
+Variable Name: LEAD_MODE
+Value: resend
+```
+Environments: ✅ Production ✅ Preview ✅ Development → **Save**
+
+```
+Variable Name: RESEND_API_KEY
+Value: re_your_api_key_here  ← IDE a saját API kulcsodat!
+```
+Environments: ✅ Production ✅ Preview ✅ Development → **Save**
+
+```
+Variable Name: RESEND_TO
+Value: mkiss0516@gmail.com  ← IDE a saját email címed!
+```
+Environments: ✅ Production ✅ Preview ✅ Development → **Save**
+
+**Kész!** → Ugorj a "3. Redeploy" részhez!
+
+---
+
+### 🌐 2B. Make.com Webhooks Setup (Haladó)
+
+⚠️ **FIGYELEM:** Ha **Mailhook**-ot használsz jelenleg → az **NEM FOG MŰKÖDNI**!
+
+#### Mailhook vs Webhooks - Mi a különbség?
+
+**❌ Mailhook** (amit most használsz):
+```
+hsuw9ump0ue7h29edkuo6be5bl8ruyh8@hook.eu2.make.com  ← EMAIL cím
+```
+- EMAIL-t fogad
+- Az űrlap HTTP POST-ot küld, nem email-t!
+
+**✅ Webhooks** (amit kellene használni):
+```
+https://hook.eu2.make.com/xxxxxxxxx  ← HTTP URL
+```
+- HTTP POST request-et fogad
+- Ez működik az űrlappal!
+
+#### Make.com új Scenario létrehozása
+
+1. **Make.com** → **Scenarios** → **Create a new scenario**
+2. **Kattints a + gombra** → **Keresd: "Webhooks"**
+3. **Válaszd:** Webhooks → **Custom Webhook**
+4. **Add a webhook** → **Add**
+5. **Webhook name:** "TemetkezésPro Lead"
+6. **Másold ki** a webhook URL-t:
+   ```
+   https://hook.eu2.make.com/XXXXXXXXX
+   ```
+
+7. **Adj hozzá Gmail modult:**
+   - Kattints a webhook **JOBBRA** levő **+** gombra
+   - Keresd: "Gmail"
+   - Válaszd: **Send an Email**
+   - To: `mkiss0516@gmail.com`
+   - Subject: `🚀 Új Lead: {{1.name}} - {{1.company}}`
+   - Body:
+   ```
+   📨 ÚJ ÉRDEKLŐDŐ
+   ════════════════════
+
+   👤 NÉV: {{1.name}}
+   📧 EMAIL: {{1.email}}
+   📞 TELEFON: {{1.phone}}
+   🏢 CÉG: {{1.company}}
+   🏙️ TELEPÜLÉS: {{1.city}}
+
+   💬 ÜZENET:
+   {{1.message}}
+
+   ✅ GDPR: {{1.consent}}
+   ⏰ IDŐPONT: {{1.timestamp}}
+   🌐 FORRÁS: {{1.source}}
+   ```
+
+   **FONTOS:** A `{{1.name}}` mezőket **a Make.com-ban válaszd ki** a webhook output listából!
+
+8. **Save** → **Turn ON** (kapcsoló jobbra felül)
+
+#### Vercel Environment Variables
+
+**Vercel Dashboard** → **Settings** → **Environment Variables**
 
 ```
 Variable Name: LEAD_MODE
 Value: make
 ```
-
-**Pipáld be mind a 3 környezetet:**
-- ✅ Production
-- ✅ Preview
-- ✅ Development
-
-**Kattints a "Save" gombra**
-
-#### Második változó:
+Environments: ✅ Production ✅ Preview ✅ Development → **Save**
 
 ```
 Variable Name: MAKE_WEBHOOK_URL
-Value: https://hook.eu2.make.com/hsuw9ump0ue7h29edkuo6be5bl8ruyh8
+Value: https://hook.eu2.make.com/XXXXXXXXX  ← IDE az ÚJ webhook URL-t!
 ```
-
-**Pipáld be mind a 3 környezetet:**
-- ✅ Production
-- ✅ Preview
-- ✅ Development
-
-**Kattints a "Save" gombra**
+Environments: ✅ Production ✅ Preview ✅ Development → **Save**
 
 ---
 
