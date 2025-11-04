@@ -19,6 +19,7 @@ interface LeadData {
   email: string
   phone: string
   company?: string
+  city?: string
   message?: string
   consent: boolean
 }
@@ -75,6 +76,7 @@ async function sendViaResend(data: LeadData): Promise<{ success: boolean; error?
       <p><strong>Email:</strong> ${data.email}</p>
       <p><strong>Telefon:</strong> ${data.phone}</p>
       ${data.company ? `<p><strong>Cég:</strong> ${data.company}</p>` : ""}
+      ${data.city ? `<p><strong>Település:</strong> ${data.city}</p>` : ""}
       ${data.message ? `<p><strong>Üzenet:</strong><br>${data.message.replace(/\n/g, "<br>")}</p>` : ""}
       <p><strong>GDPR hozzájárulás:</strong> ${data.consent ? "Igen" : "Nem"}</p>
       <p><strong>Időpont:</strong> ${new Date().toLocaleString("hu-HU")}</p>
@@ -108,7 +110,7 @@ export async function POST(request: NextRequest) {
 
     // Parse body
     const body = await request.json()
-    const { name, email, phone, company, message, consent } = body
+    const { name, email, phone, company, city, message, consent } = body
 
     // Validate required fields
     if (!name || !email || !phone || !consent) {
@@ -139,6 +141,7 @@ export async function POST(request: NextRequest) {
       email: email.trim().toLowerCase(),
       phone: phone.trim(),
       company: company?.trim(),
+      city: city?.trim(),
       message: message?.trim(),
       consent: Boolean(consent),
     }

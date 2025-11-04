@@ -12,6 +12,7 @@ import { motion } from "framer-motion"
 export function ContactForm() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [consent, setConsent] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -19,7 +20,17 @@ export function ContactForm() {
     setError("")
 
     const formData = new FormData(e.currentTarget)
-    const data = Object.fromEntries(formData)
+
+    // Manually construct the data object to ensure proper types
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      company: formData.get("company") as string,
+      city: formData.get("city") as string,
+      message: formData.get("message") as string,
+      consent: consent, // Use the controlled state value
+    }
 
     try {
       const response = await fetch("/api/lead", {
@@ -94,8 +105,13 @@ export function ContactForm() {
             </div>
 
             <div className="flex items-start space-x-2">
-              <Checkbox id="privacy" name="privacy" required />
-              <Label htmlFor="privacy" className="text-sm leading-relaxed">
+              <Checkbox
+                id="consent"
+                checked={consent}
+                onCheckedChange={(checked) => setConsent(checked === true)}
+                required
+              />
+              <Label htmlFor="consent" className="text-sm leading-relaxed">
                 Elfogadom az <a href="/adatkezeles" className="text-blue-600 underline">adatkezelési tájékoztatót</a>.
                 Hozzájárulok, hogy a megadott adataimat a TemetkezésPro felhasználja a kapcsolatfelvétel céljából. *
               </Label>
