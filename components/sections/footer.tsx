@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Calendar, Mail, Phone, MapPin } from "lucide-react"
+import { Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
@@ -79,17 +79,6 @@ export function Footer() {
                 <Phone className="w-5 h-5 mt-0.5 flex-shrink-0" />
                 <a href="tel:+36301234567" className="hover:text-white transition-colors">
                   +36 30 123 4567
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-slate-400">
-                <Calendar className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <a
-                  href="https://calendly.com/temetkezespro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  Időpont foglalás
                 </a>
               </li>
               <li className="flex items-start gap-3 text-slate-400">

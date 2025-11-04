@@ -150,19 +150,46 @@ export function FloatingChat() {
                 transition={{ delay: 0.3 }}
                 className="space-y-2 pl-10"
               >
-                {[
-                  "📊 Demó kérése",
-                  "💰 Árazás megbeszélése",
-                  "🚀 Pilot program",
-                  "📞 Visszahívás kérése",
-                ].map((option, index) => (
-                  <button
-                    key={index}
-                    className="block w-full text-left px-4 py-2 bg-white hover:bg-teal-50 border border-slate-200 hover:border-teal-300 rounded-xl text-sm text-slate-700 hover:text-teal-700 transition-all"
-                  >
-                    {option}
-                  </button>
-                ))}
+                <button
+                  onClick={() => {
+                    setIsOpen(false)
+                    setTimeout(() => {
+                      document.getElementById('kapcsolat')?.scrollIntoView({ behavior: 'smooth' })
+                    }, 100)
+                  }}
+                  className="block w-full text-left px-4 py-2 bg-white hover:bg-teal-50 border border-slate-200 hover:border-teal-300 rounded-xl text-sm text-slate-700 hover:text-teal-700 transition-all"
+                >
+                  📊 Demó kérése
+                </button>
+                <button
+                  onClick={() => {
+                    setIsOpen(false)
+                    setTimeout(() => {
+                      document.getElementById('arak')?.scrollIntoView({ behavior: 'smooth' })
+                    }, 100)
+                  }}
+                  className="block w-full text-left px-4 py-2 bg-white hover:bg-teal-50 border border-slate-200 hover:border-teal-300 rounded-xl text-sm text-slate-700 hover:text-teal-700 transition-all"
+                >
+                  💰 Árazás megbeszélése
+                </button>
+                <button
+                  onClick={() => {
+                    setIsOpen(false)
+                    setTimeout(() => {
+                      document.getElementById('kapcsolat')?.scrollIntoView({ behavior: 'smooth' })
+                    }, 100)
+                  }}
+                  className="block w-full text-left px-4 py-2 bg-white hover:bg-teal-50 border border-slate-200 hover:border-teal-300 rounded-xl text-sm text-slate-700 hover:text-teal-700 transition-all"
+                >
+                  🚀 Pilot program
+                </button>
+                <a
+                  href="mailto:info@temetkezespro.hu?subject=Visszahívást kérek"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-4 py-2 bg-white hover:bg-teal-50 border border-slate-200 hover:border-teal-300 rounded-xl text-sm text-slate-700 hover:text-teal-700 transition-all"
+                >
+                  📞 Visszahívás kérése
+                </a>
               </motion.div>
             </div>
 
@@ -173,14 +200,29 @@ export function FloatingChat() {
                   type="text"
                   placeholder="Írj egy üzenetet..."
                   className="flex-1 px-4 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
-                  disabled
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      setIsOpen(false)
+                      setTimeout(() => {
+                        document.getElementById('kapcsolat')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 100)
+                    }
+                  }}
                 />
-                <button className="w-10 h-10 bg-teal-500 hover:bg-teal-600 text-white rounded-xl flex items-center justify-center transition-colors">
+                <button
+                  onClick={() => {
+                    setIsOpen(false)
+                    setTimeout(() => {
+                      document.getElementById('kapcsolat')?.scrollIntoView({ behavior: 'smooth' })
+                    }, 100)
+                  }}
+                  className="w-10 h-10 bg-teal-500 hover:bg-teal-600 text-white rounded-xl flex items-center justify-center transition-colors"
+                >
                   <Send className="w-4 h-4" />
                 </button>
               </div>
               <p className="text-xs text-slate-400 mt-2 text-center">
-                Demo mód - Éles verzióban működik
+                Kattints vagy írj egy üzenetet
               </p>
             </div>
           </motion.div>

@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Calendar } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { DashboardPreview } from "@/components/3d/dashboard-preview"
 import { AnimatedStats } from "@/components/widgets/animated-stats"
@@ -52,23 +52,17 @@ export function Hero() {
             Nem kapcsolódunk közvetlenül az e-Anyakönyvhöz – az anyakönyvi bejelentéshez szükséges dokumentumokat automatikusan előkészítjük.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
+            className="flex justify-center items-center pt-4"
           >
             <Button size="lg" className="group" asChild>
               <a href="#kapcsolat">
                 Kérek visszahívást
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href={process.env.NEXT_PUBLIC_CAL_URL || "#"} target="_blank" rel="noopener noreferrer">
-                <Calendar className="mr-2 h-4 w-4" />
-                Demó időpont foglalás
               </a>
             </Button>
           </motion.div>
