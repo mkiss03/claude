@@ -158,7 +158,7 @@ Environments: ✅ Production ✅ Preview ✅ Development → **Save**
 
 ```
 Variable Name: MAKE_WEBHOOK_URL
-Value: https://hook.eu2.make.com/XXXXXXXXX  ← IDE az ÚJ webhook URL-t!
+Value: https://hook.eu2.make.com/ur0az5vmddn4v8s9o6pspp19v4gt1a8w
 ```
 Environments: ✅ Production ✅ Preview ✅ Development → **Save**
 
