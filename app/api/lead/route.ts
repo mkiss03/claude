@@ -65,7 +65,13 @@ async function sendToMake(data: LeadData): Promise<{ success: boolean; error?: s
 
 // Send via Resend email
 async function sendViaResend(data: LeadData): Promise<{ success: boolean; error?: string }> {
+  console.log("=== sendViaResend called ===")
+  console.log("resend object exists:", !!resend)
+  console.log("RESEND_FROM:", RESEND_FROM)
+  console.log("RESEND_TO:", RESEND_TO)
+
   if (!resend) {
+    console.error("Resend not configured - resend object is null")
     return { success: false, error: "Resend not configured" }
   }
 
@@ -82,13 +88,15 @@ async function sendViaResend(data: LeadData): Promise<{ success: boolean; error?
       <p><strong>Időpont:</strong> ${new Date().toLocaleString("hu-HU")}</p>
     `
 
-    await resend.emails.send({
+    console.log("Calling resend.emails.send()...")
+    const response = await resend.emails.send({
       from: RESEND_FROM,
       to: RESEND_TO,
       subject: `Új érdeklődés: ${data.name} - ${data.company || "Nincs megadva"}`,
       html: emailHtml,
     })
 
+    console.log("Resend API response:", response)
     return { success: true }
   } catch (error) {
     console.error("Resend email error:", error)
@@ -98,6 +106,11 @@ async function sendViaResend(data: LeadData): Promise<{ success: boolean; error?
 
 export async function POST(request: NextRequest) {
   try {
+    console.log("=== LEAD API CALLED ===")
+    console.log("LEAD_MODE:", LEAD_MODE)
+    console.log("RESEND_API_KEY exists:", !!RESEND_API_KEY)
+    console.log("RESEND_TO:", RESEND_TO)
+
     // Check if webhook is configured
     if (LEAD_MODE === "make" && !MAKE_WEBHOOK_URL) {
       console.error("MAKE_WEBHOOK_URL is not configured")
@@ -164,20 +177,29 @@ export async function POST(request: NextRequest) {
     }
 
     // Send lead data
+    console.log("=== SENDING LEAD DATA ===")
+    console.log("Lead data:", JSON.stringify(leadData, null, 2))
+
     let result
     if (LEAD_MODE === "resend") {
+      console.log("Using RESEND to send email...")
       result = await sendViaResend(leadData)
+      console.log("Resend result:", result)
     } else {
+      console.log("Using MAKE.COM webhook...")
       result = await sendToMake(leadData)
+      console.log("Make.com result:", result)
     }
 
     if (!result.success) {
+      console.error("Failed to send:", result.error)
       return NextResponse.json(
         { error: result.error || "Hiba történt" },
         { status: 500 }
       )
     }
 
+    console.log("=== SUCCESS! Lead sent ===")
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("Lead API error:", error)
