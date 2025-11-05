@@ -104,15 +104,16 @@ export function ContactForm() {
               <Textarea id="message" name="message" placeholder="Írja le röviden igényeit..." rows={4} />
             </div>
 
-            <div className="flex items-start space-x-2">
+            <div className="flex items-start space-x-3">
               <Checkbox
                 id="consent"
                 checked={consent}
                 onCheckedChange={(checked) => setConsent(checked === true)}
                 required
+                className="mt-1"
               />
-              <Label htmlFor="consent" className="text-sm leading-relaxed">
-                Elfogadom az <a href="/adatkezeles" className="text-blue-600 underline">adatkezelési tájékoztatót</a>.
+              <Label htmlFor="consent" className="text-sm leading-relaxed text-slate-700 cursor-pointer">
+                Elfogadom az <a href="/adatkezeles" className="text-blue-600 underline hover:text-blue-700">adatkezelési tájékoztatót</a>.
                 Hozzájárulok, hogy a megadott adataimat a TemetkezésPro felhasználja a kapcsolatfelvétel céljából. *
               </Label>
             </div>

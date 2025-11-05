@@ -9,17 +9,21 @@ export function ROICalculator() {
   const [employees, setEmployees] = useState(5)
   const [cases, setCases] = useState(100)
 
-  // Calculations
+  // Calculations (HUF - Forint)
   const hoursPerCase = 2 // Manual hours per case
   const savedHoursPerCase = 1.5 // 75% time saved
-  const hourlyWage = 15 // EUR per hour
-  const monthlySubscription = 79 // EUR per month (Professional plan)
+  const hourlyWage = 6000 // HUF per hour (realistic Hungarian wage)
+  const monthlySubscription = 30000 // HUF per month (Professional plan ~€79)
 
   const totalHoursSaved = cases * savedHoursPerCase
   const monthlySavings = totalHoursSaved * hourlyWage
   const netSavings = monthlySavings - monthlySubscription
   const annualSavings = netSavings * 12
   const roi = ((netSavings / monthlySubscription) * 100).toFixed(0)
+
+  const handleCTA = () => {
+    document.getElementById('kapcsolat')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950">
@@ -108,7 +112,7 @@ export function ROICalculator() {
                     </div>
                     <div className="bg-slate-900/50 rounded-lg p-3 border border-slate-700">
                       <div className="text-xs text-slate-400 mb-1">Óradíj</div>
-                      <div className="text-lg font-bold text-white">€{hourlyWage}</div>
+                      <div className="text-lg font-bold text-white">{hourlyWage.toLocaleString('hu-HU')} Ft</div>
                     </div>
                   </div>
                 </div>
@@ -134,7 +138,7 @@ export function ROICalculator() {
                       {roi}%
                     </div>
                     <div className="text-sm text-slate-400 mt-2">
-                      havonta a előfizetési díj után
+                      havonta az előfizetési díj után
                     </div>
                   </motion.div>
 
@@ -173,7 +177,7 @@ export function ROICalculator() {
                           </div>
                           <div>
                             <div className="text-xs text-slate-400">Havi nettó megtakarítás</div>
-                            <div className="text-xl font-bold text-green-400">€{netSavings.toFixed(0)}</div>
+                            <div className="text-xl font-bold text-green-400">{netSavings.toLocaleString('hu-HU')} Ft</div>
                           </div>
                         </div>
                       </div>
@@ -189,7 +193,7 @@ export function ROICalculator() {
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="text-xs text-green-300 font-medium mb-1">Éves megtakarítás</div>
-                          <div className="text-3xl font-bold text-white">€{annualSavings.toFixed(0)}</div>
+                          <div className="text-3xl font-bold text-white">{annualSavings.toLocaleString('hu-HU')} Ft</div>
                         </div>
                         <div className="text-4xl">💰</div>
                       </div>
@@ -198,6 +202,7 @@ export function ROICalculator() {
 
                   {/* CTA */}
                   <motion.button
+                    onClick={handleCTA}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full mt-6 bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white font-semibold py-4 rounded-xl shadow-lg shadow-teal-500/30 transition-all"

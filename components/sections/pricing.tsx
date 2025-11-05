@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 const plans = [
   {
     name: "Kezdő",
-    price: "49",
+    price: "19,000",
     description: "Kisebb temetkezési vállalkozásoknak",
     features: [
       "Belső nyilvántartás (max 500 rekord)",
@@ -23,7 +23,7 @@ const plans = [
   },
   {
     name: "Professzionális",
-    price: "79",
+    price: "30,000",
     description: "Legtöbbet választott csomag",
     features: [
       "Minden a Kezdő csomagból",
@@ -40,7 +40,7 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: "99",
+    price: "40,000",
     description: "Több telephelyes vállalkozásoknak",
     features: [
       "Minden a Professzionális csomagból",
@@ -107,7 +107,7 @@ export function Pricing() {
                   <CardDescription className="text-slate-400">{plan.description}</CardDescription>
                   <div className="flex items-baseline gap-2 mt-4">
                     <span className="text-5xl font-bold text-white">{plan.price}</span>
-                    <span className="text-slate-400">€/hó</span>
+                    <span className="text-slate-400">Ft/hó</span>
                   </div>
                 </CardHeader>
 
@@ -144,9 +144,9 @@ export function Pricing() {
           className="max-w-3xl mx-auto mt-12 text-center"
         >
           <p className="text-sm text-slate-500">
-            * Az árak tájékoztató jellegűek, HUF-ban is fizethető a mindenkori MNB árfolyamon.
-            Az oldalon szereplő funkciók és szolgáltatási szintek pilot programban érhetők el; a részleteket egyeztetjük.
-            Pilot partnerek számára kedvezményes feltételek.
+            * Az árak tájékoztató jellegűek és a Pilot programra vonatkoznak.
+            Az oldalon szereplő funkciók és szolgáltatási szintek egyeztetve kerülnek kialakításra.
+            Pilot partnereknek különleges kedvezményes feltételeket kínálunk.
           </p>
         </motion.div>
       </div>

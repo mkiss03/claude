@@ -195,34 +195,22 @@ export function FloatingChat() {
 
             {/* Input */}
             <div className="p-4 border-t border-slate-200 bg-white">
-              <div className="flex gap-2">
+              <div className="flex gap-2 opacity-50">
                 <input
                   type="text"
-                  placeholder="Írj egy üzenetet..."
-                  className="flex-1 px-4 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-sm"
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') {
-                      setIsOpen(false)
-                      setTimeout(() => {
-                        document.getElementById('kapcsolat')?.scrollIntoView({ behavior: 'smooth' })
-                      }, 100)
-                    }
-                  }}
+                  placeholder="Válassz egy opciót fent..."
+                  disabled
+                  className="flex-1 px-4 py-2 border border-slate-200 bg-slate-50 rounded-xl text-sm text-slate-400 cursor-not-allowed"
                 />
                 <button
-                  onClick={() => {
-                    setIsOpen(false)
-                    setTimeout(() => {
-                      document.getElementById('kapcsolat')?.scrollIntoView({ behavior: 'smooth' })
-                    }, 100)
-                  }}
-                  className="w-10 h-10 bg-teal-500 hover:bg-teal-600 text-white rounded-xl flex items-center justify-center transition-colors"
+                  disabled
+                  className="w-10 h-10 bg-slate-300 text-white rounded-xl flex items-center justify-center cursor-not-allowed"
                 >
                   <Send className="w-4 h-4" />
                 </button>
               </div>
               <p className="text-xs text-slate-400 mt-2 text-center">
-                Kattints vagy írj egy üzenetet
+                Válassz az opciók közül vagy kérj visszahívást
               </p>
             </div>
           </motion.div>
