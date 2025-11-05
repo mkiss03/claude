@@ -1,10 +1,9 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Rocket } from "lucide-react"
 import { motion } from "framer-motion"
 import { DashboardPreview } from "@/components/3d/dashboard-preview"
-import { AnimatedStats } from "@/components/widgets/animated-stats"
 
 export function Hero() {
   return (
@@ -20,14 +19,15 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="max-w-7xl mx-auto text-center space-y-12"
         >
-          {/* Badge */}
+          {/* Badge - PILOT PROGRAM */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center px-4 py-2 bg-teal-500/20 text-teal-200 rounded-full text-sm font-semibold backdrop-blur-sm border border-teal-500/30"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/20 text-amber-200 rounded-full text-sm font-semibold backdrop-blur-sm border border-amber-500/30"
           >
-            🚀 Modern digitális megoldások temetkezési vállalkozásoknak
+            <Rocket className="w-4 h-4" />
+            <span>PILOT PROGRAM • Legyen Ön az első ügyfelünk</span>
           </motion.div>
 
           {/* Main Heading */}
@@ -52,6 +52,23 @@ export function Hero() {
             Nem kapcsolódunk közvetlenül az e-Anyakönyvhöz – az anyakönyvi bejelentéshez szükséges dokumentumokat automatikusan előkészítjük.
           </motion.p>
 
+          {/* Pilot Program Notice */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+            className="inline-block max-w-2xl mx-auto"
+          >
+            <div className="bg-gradient-to-r from-teal-500/10 to-blue-500/10 backdrop-blur-sm border border-teal-500/20 rounded-2xl p-6">
+              <p className="text-slate-200 text-lg leading-relaxed">
+                🎯 <strong className="text-teal-300">Pilot partnereinknek különleges kondíciókat kínálunk!</strong><br/>
+                <span className="text-slate-300 text-base">
+                  Csatlakozzon hozzánk a termék fejlesztésének korai szakaszában, és közösen alakítsuk ki a tökéletes megoldást az Ön igényei szerint.
+                </span>
+              </p>
+            </div>
+          </motion.div>
+
           {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -59,9 +76,9 @@ export function Hero() {
             transition={{ delay: 0.4 }}
             className="flex justify-center items-center pt-4"
           >
-            <Button size="lg" className="group" asChild>
+            <Button size="lg" className="group bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600" asChild>
               <a href="#kapcsolat">
-                Kérek visszahívást
+                Érdekel a Pilot Program
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
@@ -70,11 +87,6 @@ export function Hero() {
           {/* 3D Dashboard Preview */}
           <div className="pt-12">
             <DashboardPreview />
-          </div>
-
-          {/* Animated Stats */}
-          <div className="pt-12">
-            <AnimatedStats />
           </div>
         </motion.div>
       </div>
